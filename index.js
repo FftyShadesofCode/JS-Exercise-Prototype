@@ -44,17 +44,39 @@ function Person(name, age) {
   this.name = name;
   this.age = age;}
   Person.prototype.eat = function(edible) {
-    if (this.stomach.length < 10){
+    if (this.stomach.length < 10) {
       this.stomach.push(edible);
     }
-    Person.prototype.poop = function(){
-      this.stomach = [];
+    Person.prototype.poop = function() {
+     this.stomach = [];
     }
     Person.prototype.toString = function(name, age){
-      return `${this.name}, ${this.age}`
+      return `${this.name}, ${this.age}`;
     }
   }
 
+
+//create my objects
+
+const Sable = new Person('Sable', 11);
+const Kayak = new Person('Kayak', 14);
+
+console.log(Sable.toString());
+console.log(Kayak.toString());
+
+//eat
+Sable.eat('Snausages')
+Sable.eat('Beef');
+Sable.eat('Chimken');
+Sable.eat('Milkbone');
+Sable.eat('Beggin Strips');
+
+console.log(Sable.stomach);
+
+//poop
+Sable.poop();
+
+console.log(Sable.stomach);
 
 /*
   TASK 2
@@ -70,31 +92,27 @@ function Person(name, age) {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car(model, milesperGallon) {
+function Car(model, mpg) {
   this.model = model;
-  this.milesperGallon = milesperGallon;
+  this.milesPerGallon = mpg;
   this.tank = 0;
   this.odometer = 0;
-
+}
+Car.prototype.fill = function(gallons){
+  this.tank = this.tank + gallons;
+}
+Car.prototype.drive = function(distance){
+const driveMiles = this.tank * this.milesPerGallon;
+if(distance <= driveMiles){
+  this.odometer = this.odometer + distance;
+  this.tank = this.tank - (distance/milesPerGallon)
+}else{
+    this.odometer = this.odometer + driveMiles;
+    this.tank = 0;
+  return `I ran out of fuel at ${this.odometer} miles!`
+}
 }
 
-Car.prototype.fill = function(gallons) {
-  this.gallons = gallons;
-  this.tank += gallons;
-}
-
-Car.prototype.drive = function(distance) {
-  this.distance = distance;
-  const drivableMiles = this.tank * this.milesperGallon;
-  this.odometer += distance;
-  if (drivableMiles < this.distance) {
-      return `I ran out of fuel at ${this.odometer} miles`;
-  } else {
-      this.tank = this.tank - (distance / this.milesperGallon);
-
-  }
-
-}
 
 /*
   TASK 3
