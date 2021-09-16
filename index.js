@@ -135,10 +135,10 @@ Baby.prototype.play = function() {
 /* 
   TASK 4
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+1. Window binding - 'this' without context returning zero binding
+2. Implicit binding - this principle has to do with objects with methods. always look to the left of the "."
+3. Explicit binding - In this method, you can force a function to use a certain object as its this . Explicit Binding can be applied using call(), apply(), and bind(). call(): Pass in the required object as the first parameter during the function call. The actual parameters are passed after the object.
+4. New binding - The bind() method creates a new function where this keyword refers to the parameter in the parenthesis in the above case geeks. This way the bind() method enables calling a function with a specified this value.
 */
 
 
